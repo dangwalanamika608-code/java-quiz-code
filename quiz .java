@@ -27,9 +27,42 @@ public class quiz {
         char[] correctAnswers = {'B', 'B', 'B', 'B', 'D'};
 
         int score = 0;
+    
 
         System.out.println("Welcome to the Java Quiz!");
 
 
         for (int i = 0; i < questions.length; i++) {
             System.out.println("\nQuestion " + (i + 1) + ": " + questions[i]);
+            
+            for (String option : options[i]) {
+                System.out.println(option);
+            }
+
+            System.out.print("Enter your answer (A, B, C, or D): ");
+            String userAnswer = scanner.nextLine().toUpperCase(); 
+
+            
+            if (userAnswer.length() == 1 && (userAnswer.charAt(0) >= 'A' && userAnswer.charAt(0) <= 'D')) {
+                if (userAnswer.charAt(0) == correctAnswers[i]) {
+                    System.out.println("Correct!");
+                    score++;
+                } else {
+                    System.out.println("Incorrect. The correct answer was " + correctAnswers[i] + ".");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter A, B, C, or D.");
+            
+            }
+        }
+
+        System.out.println("\nQuiz completed!");
+        System.out.println("Your final score is: " + score + " out of " + questions.length);
+
+        
+    }
+}
+    
+
+
+
